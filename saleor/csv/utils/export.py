@@ -129,7 +129,7 @@ def create_file_with_headers(
 ):
     table = etl.wrap([file_headers])
 
-    with NamedTemporaryFile() as temporary_file:
+    with NamedTemporaryFile(mode="ab+") as temporary_file:
         if file_type == FileTypes.CSV:
             etl.tocsv(table, temporary_file.name, delimiter=delimiter)
         else:
